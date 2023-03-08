@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 배열 함수
+
+        let list = ['양세영','강규남','김운비'];
+        console.log(list);
+
+        // 1. 배열의 마지막 인덱스에 데이터 넣기 : push()
+        list.push('왕지강');
+        console.log('push',list);
+
+        // 2. 배열의 마지막 인덱스 데이터 삭제 : pop()
+        list.pop();
+        console.log('pop',list);
+
+        // 3. 배열의 첫번째 인덱스에 데이터 넣기 : unshift()
+        list.unshift('이세미');
+        console.log('unshift',list);
+
+        // 4. 배열의 첫번째 인덱스 데이터 삭제 : shift()
+        list.shift();
+        console.log('shift',list);
+
+        // 5. 배열의 원하는 위치에 데이터를 추가 혹은 삭제 : splice()
+
+        // 5-1. 추가 : splice(인덱스번호, 0, 추가할 데이터)
+        list.splice(1,0 ,'심형선');
+        console.log('splice 추가',list);
+
+        // 5-2. 제거 : splice(인덱스번호, 제거할 개수)
+        list.splice(1, 1);
+        console.log('splice 제거',list);
+
+        // 5-3 추가, 제거 : splice
+        list.splice(1, 1, '안미연','한성규');
+        console.log('splice 추가 제거',list);
+
+    </script>
+</body>
+</html>

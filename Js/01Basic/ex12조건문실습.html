@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 키, 몸무게 입력 받기
+        // 2. 적정 몸무게 구하기
+        // 3. 결과 출력하기
+        // 형태 : 적정 체중은 00kg이며, 현재 적정 체중에서 00kg 
+        // 초과한(미달인, 정상인) 것을 알 수 있습니다..
+
+        let height = Number(prompt("키를 입력하세요"));
+        let weight = Number(prompt("몸무게를 입력하세요"));
+        let normal = (height-100) *0.9
+        
+        // JS 절대값 구하기 : Math.abs()
+        let gap = parseFloat(Math.abs(weight-normal));
+        let result = '';
+
+        if(weight > normal){
+            result = "초과한"
+        }else if(weight<normal){
+            result = "미달인"
+        }else{
+            result = "정상인"
+        }
+
+        document.write(`신장 : ${height}cm <br> 
+        체중 : ${weight}kg <br>
+        적정 체중 : (${height}-100)x0.9 = ${normal}(kg) <br>
+        결과 : 적정 체중 ${normal}kg이며, 현재 적정 체중에서 ${gap}kg ${result} 것을 알 수 있습니다.`);
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

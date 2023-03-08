@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, td{
+            border : 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- table을 div안에 넣을 예정!-->
+    <div id="contents"></div>
+
+    <script>
+        // 과목 수 , 과목 이름, 과목 점수, 총점, 평균담을 변수,배열 선언
+        let subNum = 0;
+        let subName = [];
+        let subScore = [];
+        let totalScore =0;
+        let avgScore = 0;
+
+        // 1. 과목 수 입력(prompt -> string형으로 반환되므로 정수형으로 형변환)
+        subNum = Number(prompt('과목수 입력'));
+
+        // 출력하여 확인
+        console.log('과목 수 ', subNum);
+
+        // for문을 이용하여 과목수 만큼 과목배열에 이름 넣어주기!
+        for(let i =0; i < subNum; i++){
+            subName[i] = prompt('점수를 입력할 과목을 입력하세요.');
+        }
+
+        // 출력하여 과목 배열 값 확인!
+        console.log(subName);
+
+        // for문을 이용하여 해당 과목의 점수를 입력하기!
+
+        for(let i =0; i < subNum; i++){
+            // 정수형으로 넣기 위해서 형변환, prompt로 "과목이름의 점수를 입력" 출력해주기
+            subScore[i] = Number(prompt(subName[i]+"의 점수를 입력"));
+            // 총합의 변수 totalScore에 입력받은 점수를 더하여 저장해주기~
+            totalScore+=subScore[i];
+        }
+
+        // 평균 구하기 평균 = 총 점수/ 과목수
+        avgScore = totalScore/subNum;
+
+        // 출력하고 싶은 데이터가 자바 안드로이드 총합 평균 이므로 총합, 평균순으로 subName에 넣어주기
+        subName.push("총합");
+        subName.push("평균");
+
+        // 출력하고 싶은 데이터가 자바점수 | 안드로이드 점수 | 총합점수 | 평균 | 이므로 totalScore, avgScore순으로 subScore에 넣어주기
+        subScore.push(totalScore);
+        subScore.push(avgScore);
+
+        // 잘 들어갔나 확인..!
+        console.log(subName);
+        console.log(subScore);
+
+        // document로 html문서에 작성하기!
+        // document.createElement는 html에 태그 작성하는거랑 비슷하다.
+
+        // table 태그 열어주기!
+        let table = document.createElement("table");
+
+        // 출력하려는 형태가 2행 4열이므로 tr = 2개 , td = 4개
+        for(let i=0;i<2;i++){
+            // tr태그 열어주기
+            let tr = document.createElement("tr");
+            // td 태그 열어주기 
+            for(let j=0; j<subName.length;j++){
+                let td = document.createElement("td");
+                if(i==0){
+                    //1행은 subName의 값들 넣어주기!
+                    let txt = document.createTextNode((subName[j]));
+                    // txt는 <td> content </td> content의 역할
+                    td.appendChild(txt); 
+                    // tr태그의 자식으로 td가 들어가야 하므로 appendChild를 사용하여 tr의 자식요소로 보내주기!
+                    tr.appendChild(td);
+                }else{
+                    //2행은 subScore의 값들 넣어주기!
+                    let txt = document.createTextNode((subScore[j]));
+                    td.appendChild(txt);
+                    tr.appendChild(td);
+                }
+            }
+            // table태그의 자식으로 tr이 들어가야 하므로 appendChild를 사용하여 table의 자식요소로 보내주기!
+            table.appendChild(tr);
+        }
+
+        // <div id = contents> contents </div>
+
+        // contents라는 변수에 id값이 contents인 선택자를 찾아 넣어주기
+        let contents = document.querySelector("#contents");
+        
+        // table 안에 tr 안에 td 넣는 거랑 똑같이 div안에 table 넣어주기
+        contents.appendChild(table);
+    </script>
+    
+
+</body>
+</html>

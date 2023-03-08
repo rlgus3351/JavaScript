@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        // 1. 23,54,78,13,44를 넣은 리스트를 생성
+        let numList = [23,54,78,13,44];
+
+
+        
+        // 2. 반복문 이용해서 최대값 찾기
+        // 2-1. 비교할 대상을 잡아준다.
+        let maxNum = numList[0];
+
+        // 2-2. maxNum과 numList의 값을 비교해가며 최대값을 찾아준다.
+        for(let i = 1; i<numList.length; i++){
+            if(maxNum<numList[i]){
+                maxNum = numList[i];
+            }
+        }
+        // 3. 결과 출력하기
+        alert(`최대값은 >> ${maxNum}`);
+    </script>
+</body>
+</html>

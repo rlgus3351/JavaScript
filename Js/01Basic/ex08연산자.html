@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //  /: js에서는 실제 나누기 연산 결과
+        //  % : 나눈 몫이 나온다.
+        console.log("연산결과",100/3);
+        console.log("몫 이후 나머지",100%3);
+        
+        // 몫만 나오게 하지
+        // (1) 정수로 형변환 : parseInt()
+        console.log("몫",parseInt(100/3));
+        console.log('몫', (100-100%3)/3);
+        //(2) 연산결과 - 나머지
+        <!-- console.log(10/4-10%4); -->
+        // ===: 값과 자료형을 비교
+
+        // 비교 연산자 === : 타입과 값을 같이 비교해준다.
+
+        let num = 5;
+        let str = '5';
+
+        console.log("==",num==str);
+        console.log("===",num===str);
+        console.log("형변환", num===Number(str));
+
+    </script>
+</body>
+</html>

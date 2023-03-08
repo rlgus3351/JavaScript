@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 시작 숫자, 마지막 숫자 입력 받기
+        let num1 = Number(prompt("시작 숫자를 입력하세요."));
+        // 2. 시작 ~ 마지막 숫자까지의 합 구하기
+        let num2 = Number(prompt("마지막 숫자를 입력하세요."));
+        // 3. 결과 출력하기 -> 콘솔창
+        let total = 0;
+
+        for(let i = num1; i<=num2; i++){
+            total+=i;
+        }
+        // 00부터 00까지의 합은 >> 00
+        console.log(`${num1}부터 ${num2}까지 합은 >> ${total}`);
+    </script>
+</body>
+</html>

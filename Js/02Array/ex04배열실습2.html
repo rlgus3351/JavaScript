@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr,td{
+            border : 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 과목 수 , 과목 이름, 과목 점수, 총점, 평균
+        let subNum = 0;
+        let subName = [];
+        let subScore = [];
+        let totalScore =0;
+        let avgScore = 0;
+
+        // 1. 과목 수 입력(prompt -> string형으로 반환되므로 정수형으로 형변환)
+        subNum = Number(prompt('과목수 입력'));
+
+         // 출력하여 확인
+        console.log('과목 수 ', subNum);
+
+        // for문을 이용하여 과목수 만큼 과목배열에 이름 넣어주기!
+        for(let i =0; i < subNum; i++){
+            subName[i] = prompt('점수를 입력할 과목을 입력하세요.');
+        }
+
+        // 출력하여 과목 배열 값 확인!
+        console.log(subName);
+
+        // for문을 이용하여 해당 과목의 점수를 입력하기!
+        for(let i =0; i < subNum; i++){
+            // 정수형으로 넣기 위해서 형변환, prompt로 "과목이름의 점수를 입력" 출력해주기
+            subScore[i] = Number(prompt(subName[i]+"의 점수를 입력"));
+            // 총합의 변수 totalScore에 입력받은 점수를 더하여 저장해주기~
+            totalScore+=subScore[i];
+        }
+
+        // 평균 구하기 평균 = 총 점수/ 과목수
+        avgScore = parseInt(totalScore/subNum);
+        // document.write로 html문서 작성하기
+        document.write("<table>");
+        document.write('<tr>');
+            // 1행에 넣어줄 데이터는 subName의 값과 + 총합 + 평균
+            for(let i =0; i<subName.length; i++){
+                document.write(`<td>${subName[i]}</td>`);
+            }
+        document.write('<td>총합</td>');
+        document.write('<td>평균</td>');
+        document.write('</tr>');
+        document.write('<tr>');
+            // 2행에 넣어줄 데이터는 subScore의 값과 + 총합 + 평균
+            for(let i =0; i<subScore.length; i++){
+                document.write(`<td>${subScore[i]}</td>`);
+            }
+
+        document.write(`<td>${totalScore}</td>`);
+        document.write(`<td>${avgScore}</td>`);
+        document.write('</tr>');
+        document.write("</table>");
+    </script>
+    
+
+</body>
+</html>

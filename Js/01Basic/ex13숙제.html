@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id = "bodyTag">
+    배경입니다.
+    <script>
+        //// 1. 사용자로부터 색상 입력받기
+        let color_text = prompt("색상을 입력해주세요(빨강, 초록, 파랑)")
+        console.log('배경색 : ' , color_text);
+        // 2. 빨강 -> red / 초록 -> green / 파랑 -> 'blue'
+        if(color_text=="빨강"){
+            document.getElementById('bodyTag').style.background="red";
+        }else if(color_text=="파랑"){
+            document.getElementById('bodyTag').style.background="blue";
+        }else if(color_text=="초록"){
+            document.getElementById('bodyTag').style.background="green";
+        }else{
+            alert("잘못입력하셨습니다.");
+        }
+
+        // 2-2 switch 문
+        let result = '';
+        switch(color_text){
+            case "빨강" : result = "red";
+            break;
+            case "초록": result = "green";
+            break;
+            case "파랑": result = "blue";
+            break;
+            default: alert("잘못 입력 하셨습니다.");
+        }
+        document.getElementById('bodyTag').style.background=result;
+    </script>
+</body>
+</html>
