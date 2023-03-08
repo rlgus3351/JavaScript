@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 내장객체 : 자바스크립트에서 제공하는 객체
+        // Array , Math, Date, ....
+
+        let today = new Date();
+
+        let yesterday = new Date(2023,2,7, 0,0,0);
+        console.log('오늘:',today);
+        console.log('어제:',yesterday);
+        
+        let tYear = today.getFullYear();
+        let tMonth = today.getMonth()+1;
+
+        // 일요일 : 0
+        // 토요일 : 6
+        let tDate = today.getDate();
+        let tWeek = today.getDay();
+        let week = "";
+        if (tWeek == 0){
+            week = "일";
+        }else if(tWeek==1){
+            week = "월";
+        }else if(tWeek==2){
+            week = "화";
+        }else if(tWeek==3){
+            week = "수";
+        }else if(tWeek==4){
+            week = "목";
+        }else if(tWeek==5){
+            week = "금";
+        }else{
+            week = "토";
+        }
+
+        let tHour = today.getHours();
+        let tMin = today.getMinutes();
+        let tSecond = today.getSeconds();
+
+        document.write(`${tYear}년 ${tMonth}월 ${tDate}일 ${week}요일 <br>
+        ${tHour}시 ${tMin}분 ${tSecond}초입니다!!`);
+
+    </script>
+</body>
+</html>
