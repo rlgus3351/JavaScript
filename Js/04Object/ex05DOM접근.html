@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="container">
+        <p>Hello, World!</p>
+        <p style ="display:none;">Hidden Text</p>
+    </div>
+    <button onclick="textFunc()">TEXT</button>
+    <button onclick="htmlFunc()">HTML</button>
+    <script>
+        // 1. div 요소에 접근
+        // -> getElementById
+        let domVal = document.getElementById("container");
+        console.log("요소 가져오기 : ",domVal);
+        
+        // 2. text버튼 클릭시, 요소에서 내용만 가져오기
+        // -> innerText, textContent
+        const textFunc = ()=>{
+            console.log('내용만 : ',domVal.innerText);
+            console.log('숨겨진 내용까지 : ', domVal.textContent);
+
+        };
+
+        // 3. html버튼 클릭 시, 요소에 태그까지 가져오기
+        const htmlFunc = ()=>{
+            console.log("태그까지 : ", domVal.innerHTML);
+            domVal.innerHTML = "<h1>JavaScript</h1>";
+        }
+        
+    </script>
+</body>
+</html>

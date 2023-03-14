@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        hr {
+            width: 500px;
+        }
+
+        .todo {
+            font-size: 20px;
+            width: 200px;
+        }
+
+        .form-control {
+            width: 400px !important;
+        }
+
+        body {
+            margin: 20px;
+        }
+
+        .task {
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .task-done {
+            background-color: gray !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 타이틀 시작 -->
+    <div class="main">
+        <h1>ㅇㅇ의 투두리스트🙌</h1><br>
+        <div class="input-area">
+            <div class="row g-2">
+                <div class="col-auto">
+                    <input type="text" class="form-control" id="task-input">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3" id="add-button">추가</button>
+                </div>
+            </div>
+        </div>
+        <hr><br>
+    </div>
+    <!-- 타이틀 끝 -->
+
+    <div id="task-board"></div>
+
+    <script>
+        /*
+        1. 유저가 할 일을 입력한다.
+        2. 버튼을 클릭하면 할 일이 추가된다.
+        3. 추가된 목록을 웹페이지에 출력한다.
+        4. 완료 버튼을 누르면 할일에 완료 표시가 보여진다.
+            완료인지 아닌지 구분하는 방법..?
+            -> task를 저장할 때 상태값도 같이 저장! (객체 형태로 저장)
+            4-1. '완료' 클릭하는 순간 true/false
+            4-2. true면 다 한 걸로 간주하고 다 한 표시
+            4-3. false면 안끝난 걸로 간주하고 그대로
+        5. 삭제 버튼을 누르면 할일이 삭제된다.
+        */
+
+        const taskInput = document.getElementById("task-input");
+        const addButton = document.getElementById("add-button");
+        let taskList = []; // 유저가 입력한 할 일을 저장하는 배열
+        const taskBoard = document.getElementById("task-board");
+
+        const addTask = function () {
+            // console.log(taskInput.value);
+            // let task = taskInput.value;
+
+            // 유저가 입력한 데이터와 체크상태를 가지는 객체
+            let task = {
+                taskContent: taskInput.value,
+                isComplete: false
+            }
+
+            taskList.push(task);
+            console.log(taskList);
+            console.log(task);
+            render();
+        }
+
+        const render = function () {
+            let resultHTML = "";
+
+            // 체크상태에 따른 task를 출력
+            // 반복 돌려서 웹페이지에 띄워주는건 add Task에만 사용 중이다
+            // 완료 눌렀을때는 우리가 render()를 주지 않았기 때문에 머물러있다
+
+            for (let i = 0; i < taskList.length; i++) {
+                // isComplete : true ---> 클래스를 "task task-done" 태그로 출력
+                // isComplete : false ---> 클래스를 "task" 태그 출력
+
+                if (taskList[i].isComplete) {
+                    // true
+                    resultHTML += `
+                    <div class="row g-3 task task-done">
+                        <div class="col-auto todo">
+                            <span class="todo"> ${taskList[i].taskContent} </span>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-success" onclick="toggleCheck('${i}')">완료</button>
+                            <button class="btn btn-danger" onclick="deleteTask('${i}')">삭제</button>
+                        </div>
+                    </div>
+                `;
+                } else {
+                    // false
+                    resultHTML += `
+                    <div class="row g-3 task">
+                        <div class="col-auto todo">
+                            <span class="todo"> ${taskList[i].taskContent} </span>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-success" onclick="toggleCheck('${i}')">완료</button>
+                            <button class="btn btn-danger" onclick="deleteTask('${i}')">삭제</button>
+                        </div>
+                    </div>
+                `;
+                }
+            }
+            taskBoard.innerHTML = resultHTML;
+        }
+
+        const toggleCheck = function (idx) {
+            console.log('선택한 버튼 방', idx);
+
+            // 인덱스를 활용해서 특정 할 일에 대한 체크상태를 변경
+
+            if(taskList[idx].isComplete){
+                //true
+                taskList[idx].isComplete = false;
+            }else{
+                //false
+                taskList[idx].isComplete = true;
+            }
+            // 체크 상태가 바뀐 정보를 다시 웹페이지에 출력 (갱신, 업데이트)
+            render();
+        }
+
+        const deleteTask = function(idx){
+            taskList.splice(idx,1);
+            // 체크 상태가 바뀐 정보를 다시 웹페이지에 출력 (갱신, 업데이트)
+            render();
+        }
+
+        addButton.addEventListener("click", addTask);
+
+    </script>
+
+
+
+</body>
+
+</html>

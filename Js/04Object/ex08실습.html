@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>입력한 값을 h1태그로 출력해보기</h1>
+    <input type="text" id = "inputTag">
+    <button onclick="h1Func()"> h1태그 출력</button>
+    <div id = "area">
+
+    </div>
+    <script>
+        const h1Func = ()=>{
+            // 
+            let inputVal = document.getElementById('inputTag').value;
+            document.getElementById('area').innerHTML += `<h1>${inputVal}</h1>`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="pTag">Hello World</p>
+    <button onclick="ckFunc()">click</button>
+
+    <script>
+        // 문서에 -> document
+        // 접근해서 -> .
+        // 가지고온다 -> get
+        // 요소를 -> Element
+        // 아이디를 통해서-> ByID
+        let pText = document.getElementById("pTag");
+
+        const ckFunc = ()=>{
+
+            // p태그 자체
+            console.log(pText);
+
+            // 태그에서 글씨만
+            document.write("<h1>"+pText.innerText+"</h1>");
+        };
+        
+
+    </script>
+</body>
+</html>
