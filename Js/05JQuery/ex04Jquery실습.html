@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- h1 더블클릭 했을 때 배경색 변경, 글씨색 변경-->
+    <h1 class="test">jQuery Click!</h1>
+
+    <script src="/jquery-3.6.4.min.js"></script>
+
+    <script>
+
+        $('h1').on('mouseover', () => {
+            $('*').css('background-color','pink');
+            $('h1').css('color','white');
+        })
+        
+
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
