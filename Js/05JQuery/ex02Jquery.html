@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">나는 div2</div>
+        <div id="div3">나는 div3</div>
+        <div id="div4">나는 div4</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+
+        // 1. 자식요소 가져오는 방법
+        console.log($('#div1').children('div'));
+
+        // 2. 부모요소 가져오는 방법
+        console.log($('#div2').parents('div'));
+
+        // 3. 이전 요소들을 가져오는 방법
+        console.log($('#div4').prevAll());
+
+        // 4. 다음 요소들을 가져오는 방법
+        console.log($('#div2').nextAll());
+
+        
+    </script>
+
+
+
+
+</body>
+</html>
