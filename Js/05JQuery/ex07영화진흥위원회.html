@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>
         박스오피스!
     </h1>
-    <button id = "btn-req">데이터 요청</button>
+    <button id="btn-req">데이터 요청</button>
 
-    <div id = "movie-area"></div>
-    <script src = "/jquery-3.6.4.min.js"></script>
+    <div id="movie-area">
+
+    </div>
+    <script src="/jquery-3.6.4.min.js"></script>
     <script>
 
         // 오픈 API
@@ -31,32 +35,50 @@
 
 
         const btnRep = document.getElementById("btn-req");
-        const getMovieList = function (){
+        const movieArea = document.getElementById("movie-area");
+        const getMovieList = function () {
             // 영화 정보를 비동기 통신으로 요청하는 로직
             let movieURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=20230310";
             $.ajax({
-                url : movieURL,
-                success : function(result){
+                url: movieURL,
+                success: function (result) {
                     console.log("요청 성공");
                     console.log(result);
-                    for(let i=0; i<10; i++){
-                        console.log(result.boxOfficeResult.dailyBoxOfficeList[i].movieNm);
-                    }
+                    //for(let i=0; i<10; i++){
+                    //  console.log(result.boxOfficeResult.dailyBoxOfficeList[i].movieNm);
+                    //}
+                    let movieList = result.boxOfficeResult.dailyBoxOfficeList;
+                    // 영화 순위 , 영화명, 개봉일을 웹페이지에 출력하기
+                    render(movieList);
+
                 },
-                error : function(){
+                error: function () {
                     console.log("오류 발생!");
                 }
 
             });
         }
-        
+
         btnRep.addEventListener("click", getMovieList);
-        
-
-
-
-
-
+        const render = function (movieList) {
+            let resultHTML = `
+            <table border="1px solid black" width ="500px">
+                <tr id = "movie_rank">
+                    <td>순위</td>
+                    <td>영화명</td>
+                    <td>개봉일</td>
+                </tr>`;
+            for (let i = 0; i < 10; i++) {
+                resultHTML += `<tr>
+                                <td align="center">${movieList[i].rank}</td>
+                                <td>${movieList[i].movieNm}</td>
+                                <td>${movieList[i].openDt}</td>
+                            </tr>`;
+            }
+            resultHTML += "</table>";
+            
+            $('#movie-area').append(resultHTML);
+        }
     </script>
 </body>
 </html>
