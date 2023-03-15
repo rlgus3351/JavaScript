@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        박스오피스!
+    </h1>
+    <button id = "btn-req">데이터 요청</button>
+
+    <div id = "movie-area"></div>
+    <script src = "/jquery-3.6.4.min.js"></script>
+    <script>
+
+        // 오픈 API
+        // Open Application Programing Interface
+
+        // 장점 : 시간과 비용이 많이 드는 기능을 직접 구현하지 않아도 유용한 기능이나 데이터를 제공해준다.
+        // 단점 : API를 서비스하는 회사들의 대부분은 사용자에게 인증키를 발급하도록 하고, 할당량을 제공..(초과 시 요금 부여)
+
+        // 공공 데이터 포털, 네이버 개발자 센터, 카카오 개발자 센터, google developers ...
+        // 데이터 제공은 -xml, json, csv
+        // xml : 데이터를 주고받는 포맷, 우리가 알아볼수 있도록 의미있는 단어로 마크해준다.
+        // json : 자바스크립트 객체 형식을 따르는 데이터 포맷 
+        // csv : 
+
+
+
+        const btnRep = document.getElementById("btn-req");
+        const getMovieList = function (){
+            // 영화 정보를 비동기 통신으로 요청하는 로직
+            let movieURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=20230310";
+            $.ajax({
+                url : movieURL,
+                success : function(result){
+                    console.log("요청 성공");
+                    console.log(result);
+                    for(let i=0; i<10; i++){
+                        console.log(result.boxOfficeResult.dailyBoxOfficeList[i].movieNm);
+                    }
+                },
+                error : function(){
+                    console.log("오류 발생!");
+                }
+
+            });
+        }
+        
+        btnRep.addEventListener("click", getMovieList);
+        
+
+
+
+
+
+    </script>
+</body>
+</html>

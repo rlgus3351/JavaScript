@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div id="div1">
         <div id="div2">나는 div2</div>
@@ -13,27 +15,27 @@
         <div id="div4">나는 div4</div>
     </div>
 
-    <h1 id = "msg">조금만 버티면 집에 가요..</h1>
+    <h1 id="msg">조금만 버티면 집에 가요..</h1>
 
-    <button class="tableMake">
+    <button id="btn">
         추가
     </button>
+
     <table border="1">
-        <tr id = "tb">
+        <tr id="tb">
             <td>클릭이벤트</td>
             <td>발생!!!!!!</td>
         </tr>
     </table>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script>
-        let tbody = $('#tb').parent();
-        let tagtext = $('#tb').text();
-        console.log(tagtext);
-        $('.tableMake').on('click',() =>{
-            tagtext +='<tr><td>새로운 방입니다.</td></tr>'
-            tbody.html(tagtext);
-            console.log(tbody.html())
+
+        $('#btn').on('click', () => {
+            let tagtext = '<tr><td>새로운방</td><td>생성!!!!!!</td></tr>';
+            //$('#tb').parent().append(tagtext);
+            $('#tb').after(tagtext);
         })
         // 1. 자식요소 가져오는 방법
         console.log($('#div1').children('div'));
@@ -43,19 +45,19 @@
 
         // 3. 이전 요소들을 가져오는 방법
         console.log($('#div4').prevAll());
-        
+
         // 4. 다음 요소들을 가져오는 방법
         console.log($('#div2').nextAll());
-        
+
         // 조작 메소드
-        
+
         // 1.코드/텍스트 가져오기
         // 1-1. .html(): 선택한 요소안의 내용을 가져온다(태그포함)
         // 1-2. .text(): 선택한 요소안의 내용을 가져온다(태그 미포함)
 
         console.log($('#msg').html());
         console.log($('#msg').text());
-        
+
         console.log($('#div1').html());
         console.log($('#div1').text());
 
