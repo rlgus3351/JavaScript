@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <style>
+        p#num{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    Like! 🖤 <p id = "num"> 0 </p>
+    <br>
+    <button id="btn-plus" onclick="plusNumber">+1증가</button>
+    <button id="btn-minus" >-1감소</button>
+    <button id="btn-reset" >초기화</button>
+
+    <!-- 문제. 버튼을 눌렀을 때, 웹페이지의 숫자가 변하는 로직-->
+    <!-- 감소 버튼 클릭했을 떄, 음수가 나오지 않도록!-->
+    <!--1. HTML 태그에 접근(P, BUTTON)
+        2. 각 버튼에 이벤트를 정의한다
+        3. 결과값을 p태그에 출력하게 한다.
+    -->
+    <script src="ex03_Js2.js"></script>
+</body>
+</html>
